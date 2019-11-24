@@ -1,0 +1,109 @@
+body {
+    background-color: rgb(13, 34, 54);
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.header {
+    overflow: hidden;
+    background-color: rgb(242, 249, 255);
+    padding: 10px;
+    margin: -10px;
+    height: 80px;
+}
+
+.logo {
+    margin-left: 20px;
+}
+
+.header-right a {
+    float: left;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 12px 20px 12px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 10px;
+    background: linear-gradient(to right, rgb(28, 56, 82), rgb(58, 87, 114));
+    margin: 16px 10px auto;
+}
+
+.header-right {
+    float: right;
+    margin-right: 10px;
+}
+
+    .header-right a:hover {
+        opacity: 0.75
+    }
+
+.login-box {
+    background-color: #FFFFFF;
+    width: 400px;
+    height: 400px;
+    align-self: auto;
+    margin: 100px auto;
+    border-radius: 1em;
+}
+
+    .login-box a {
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+
+.sign-in-text {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 15px;
+    color: rgb(28, 56, 82);
+    font-weight: bold;
+    font-size: 27px;
+}
+
+.input {
+    width: 300px;
+    color: rgb(49, 64, 71);
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background-color: rgba(145, 170, 194, 0.1);
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin: auto 50px 25px 50px;
+    text-align: center;
+    outline: none;
+}
+
+    .input.password {
+        margin-bottom: 50px;
+    }
+
+.sign {
+    cursor: pointer;
+    border-radius: 20px;
+    color: #FFFFFF;
+    background: linear-gradient(to right, rgb(28, 56, 82), rgb(58, 87, 114));
+    border: 0;
+    padding: 10px 35px 10px 35px;
+    font-size: 13px;
+}
+
+    .sign:hover {
+        opacity: 0.75
+    }
+
+    .sign.in {
+        margin-left: 80px;
+    }
+
+    .sign.up {
+        margin-left: 10px;
+    }
+
+@media (max-width: 600px) {
+    .main {
+        border-radius: 0px;
+    }
+}

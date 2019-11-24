@@ -5,9 +5,7 @@ var path = require('path');
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-
-    let user = req.session.user;
-    if (user) {
+    if (req.session.user) {
         res.sendFile(path.resolve(__dirname + '/../views/home.html'));
     }
     else {
