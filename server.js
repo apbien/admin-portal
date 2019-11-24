@@ -13,7 +13,6 @@ require('dotenv').config();
 var index = require('./routes/index');
 var login = require('./routes/Login');
 var home = require('./routes/home');
-var restrict = require('./routes/restrict');
 
 var app = express();
 
@@ -40,7 +39,6 @@ app.use(session({
 app.use('/', index);
 app.use('/login', login);
 app.use('/home', home);
-app.use('/restrict', restrict);
 
 //CATCH 404 - FORWARD TO ERROR HANDLERS
 app.use(function(req, res, next) {
