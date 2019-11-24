@@ -2,7 +2,6 @@
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
-const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const Login = require('../models/login');
 const path = require('path');
