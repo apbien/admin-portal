@@ -11,9 +11,7 @@ body {
     height: 80px;
 }
 
-.logo {
-    margin-left: 20px;
-}
+.logo {margin-left: 20px;}
 
 .header-right a {
     float: left;
@@ -29,15 +27,13 @@ body {
 }
 
 .header-right {
-    float: right;
+    float: right; 
     margin-right: 10px;
 }
 
-    .header-right a:hover {
-        opacity: 0.75
-    }
+.header-right a:hover {opacity: 0.75}
 
-.login-box {
+.main-box {
     background-color: #FFFFFF;
     width: 400px;
     height: 400px;
@@ -46,14 +42,32 @@ body {
     border-radius: 1em;
 }
 
-    .login-box a {
-        color: #FFFFFF;
-        text-decoration: none;
-    }
-
-.sign-in-text {
+.main-box a {
+    color: rgb(28, 56, 82);
     text-align: center;
-    padding-top: 50px;
+    text-decoration: none;
+    width: 100%;
+    height: 27px;
+    padding: 10px 0px 0px 0px;
+    margin-top: 3px;
+    display: block;
+}
+
+.main-box a:hover {
+    background-color: rgb(53, 83, 112);
+    color: rgb(201, 212, 223);
+    letter-spacing: 0.5px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0px;
+}
+
+.box-title {
+    text-align: center;
+    padding-top: 70px;
     padding-bottom: 15px;
     color: rgb(28, 56, 82);
     font-weight: bold;
@@ -76,11 +90,9 @@ body {
     outline: none;
 }
 
-    .input.password {
-        margin-bottom: 50px;
-    }
+.input.password {margin-bottom: 50px;}
 
-.sign {
+.sign-in {
     cursor: pointer;
     border-radius: 20px;
     color: #FFFFFF;
@@ -88,19 +100,10 @@ body {
     border: 0;
     padding: 10px 35px 10px 35px;
     font-size: 13px;
+    margin-left: 38%;
 }
 
-    .sign:hover {
-        opacity: 0.75
-    }
-
-    .sign.in {
-        margin-left: 80px;
-    }
-
-    .sign.up {
-        margin-left: 10px;
-    }
+.sign-in:hover {opacity: 0.75}
 
 @media (max-width: 600px) {
     .main {

@@ -11,7 +11,8 @@ var session = require('express-session');
 //ROUTE DIRECTORIES -- ADD THE VARIABLES HERE
 var index = require('./routes/index');
 var login = require('./routes/Login');
-var home = require('./routes/home');
+var logout = require('./routes/logout');
+var admin = require('./routes/admin');
 
 var app = express();
 
@@ -47,7 +48,8 @@ app.use((req, res, next) => {
 //MIDDLEWARE FOR ROUTERS
 app.use('/', index);
 app.use('/login', login);
-app.use('/home', home);
+app.use('/logout', logout);
+app.use('/admin', admin);
 
 //CATCH 404 - FORWARD TO ERROR HANDLERS
 app.use(function(req, res, next) {

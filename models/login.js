@@ -19,7 +19,7 @@ module.exports = db.sequelize.define(
             type: Sequalize.STRING,
             allowNull: false,
             validate: {
-                len: [7,150]
+                len: [7,100]
             }
         },
         user_login_fk: {

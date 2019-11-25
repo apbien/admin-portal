@@ -17,8 +17,6 @@ router.post('/', (req, res) => {
         login_password: req.body.login_password
     };
 
-    var found = false;
-
     Login.findOne //function to find a login from the DB
     ({
         where: {
@@ -32,22 +30,11 @@ router.post('/', (req, res) => {
                 bcrypt.compare(loginData.login_password, login.login_password, (err, result) => {
                     if (result) {
                         req.session.user = login.login_id;
-                        res.redirect('/home');
+                        res.redirect('/admin');
                     } else {
                         res.status(400).json({ error: 'Incorrect login information.' });
                     }
                 })
-
-                /*
-                if (bcrypt.compare(loginData.login_password, login.login_password)) {
-                    console.log(bcrypt.compare(loginData.login_password, login.login_password));
-                    req.session.user = login; //saves the session of the current user
-                    res.redirect('/home'); // redirects them to the admin home portal
-                }
-                else {
-                    //we can honestly do something else that reports it's incorrect and redirects them to /login again
-                    res.status(400).json({ error: 'Incorrect login information.' });
-                }*/
             }
         })
         .catch(err => //to catch if any other error occurs

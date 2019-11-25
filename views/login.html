@@ -1,27 +1,28 @@
 <!doctype html>
 <html>
-<head>
-    <title>Admin Portal</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="/routes/Login.js"></script>
-</head>
-<body>
-    <div class="header">
-        <a class="logo" href="#default"><img src="https://banner2.cleanpng.com/20180719/og/kisspng-logo-web-design-augmented-reality-surface-icon-5b50a28a175192.7606479115320111460955.jpg" height="75px"></a>
-        <div class="header-right">
-            <a class="active" href="#home">Home</a>
-            <a href="#sign-in">Sign In</a>
+    <head>
+        <title>Admin Portal</title>
+        <link rel = "stylesheet" href = "/stylesheets/style.css">
+        <script src = "/routes/login.js"></script>
+    </head>
+    <body>
+        <div class = "header">
+            <a class = "logo" href = "#default"><img src = "/images/eggylogo.png" height = "75px"></a>
+            <div class = "header-right">
+                <nav>
+                    <a href = "home.html">Home</a>
+                    <a href = "#sign-in">Sign In</a>
+                </nav>
+            </div>
         </div>
-    </div>
 
-
-    <form method="post" action="/login">
-        <div class="login-box">
-            <p class="sign-in-text">Sign in</p>
-            <input class="input" type="text" name="login_id" placeholder="Username">
-            <input class="input password" type="password" name="login_password" placeholder="Password">
-            <input class="sign in" type="submit" value="Login"/>
-        </div>
-    </form>
-</body>
+        <form method = "post" action = "/login">
+            <div class = "main-box">
+                <p class = "box-title">Sign in</p>
+                <input class = "input" type = "text" placeholder = "Username" name="login_id">
+                <input class = "input password" type = "password" placeholder = "Password" name="login_password">
+                <input class = "sign-in" type = "submit" value = "Login">
+            </div>
+        </form>
+    </body>
 </html>
