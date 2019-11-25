@@ -5,7 +5,7 @@ var path = require('path');
 
 /* GET default page. */
 router.get('/', (req, res) => {
-    if (req.session.user && req.cookies.user_sid) {
+    if (req.session.user && req.cookies.login_id) {
         res.clearCookie('user_sid');
     }
     res.redirect('/login');

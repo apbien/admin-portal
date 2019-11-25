@@ -7,7 +7,6 @@ var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-require('dotenv').config();
 
 //ROUTE DIRECTORIES -- ADD THE VARIABLES HERE
 var index = require('./routes/index');
@@ -30,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('trust proxy', 1) 
 
 app.use(session({
-    key: 'user_sid',
+    key: 'login_id',
     secret: 'adminportal',
     resave: false,
     saveUninitialized: false,
@@ -39,8 +38,8 @@ app.use(session({
 
 //MIDDLEWARE FUNCITONS
 app.use((req, res, next) => {
-    if (req.cookies.user_sid && !req.session.user) {
-        res.clearCookie('user_sid');
+    if (req.cookies.login_id && !req.session.user) {
+        res.clearCookie('login_id');
     }
     next();
 });
