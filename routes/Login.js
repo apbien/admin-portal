@@ -25,17 +25,16 @@ router.post('/', (req, res) => {
     })
         .then(login => //pass login through the function
         {
-            if (!login) { res.redirect('/login'); }
-            else {
+            if (login) {
                 bcrypt.compare(loginData.login_password, login.login_password, (err, result) => {
                     if (result) {
                         req.session.user = login.login_id;
                         res.redirect('/admin');
-                    } else {
-                        res.status(400).json({ error: 'Incorrect login information.' });
                     }
+
                 })
             }
+
         })
         .catch(err => //to catch if any other error occurs
         {
