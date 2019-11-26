@@ -7,17 +7,20 @@ var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var hbs = require('express-handlebars');
 
 //ROUTE DIRECTORIES -- ADD THE VARIABLES HERE
 var index = require('./routes/index');
 var login = require('./routes/Login');
 var logout = require('./routes/logout');
-var admin = require('./routes/admin');
+var home = require('./routes/home');
 
 var app = express();
 
 //SET VIEWS TO THE VIEWS DIRECTORY
-app.set('views', path.join(__dirname + '/views'));
+app.engine('hbs', hbs({ extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname+'/views/layouts/' }));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
 
 //USE OF DEPENDENCIES
 app.use(favicon(__dirname + '/public/images/egg'));
@@ -49,7 +52,7 @@ app.use((req, res, next) => {
 app.use('/', index);
 app.use('/login', login);
 app.use('/logout', logout);
-app.use('/admin', admin);
+app.use('/home', home);
 
 //CATCH 404 - FORWARD TO ERROR HANDLERS
 app.use(function(req, res, next) {

@@ -6,7 +6,11 @@ const Login = require('../models/login');
 const path = require('path');
 
 router.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname + '/../views/login.html'));
+    if (req.session.user && req.cookies.login_id) {
+        res.redirect('/home');
+    } else {
+        res.render('login');
+    }
 });
 
 router.post('/', (req, res) => {
@@ -29,7 +33,7 @@ router.post('/', (req, res) => {
                 bcrypt.compare(loginData.login_password, login.login_password, (err, result) => {
                     if (result) {
                         req.session.user = login.login_id;
-                        res.redirect('/admin');
+                        res.redirect('/home');
                     }
 
                 })
