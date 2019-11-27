@@ -1,11 +1,25 @@
 <!doctype html>
 <html>
-<head>
-    <title>Admin Portal</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <script src="/routes/login.js"></script>
-</head>
-<body>
-    {{{body}}}
-</body>
+    <head>
+        <title>Admin Portal</title>
+        <link rel = "stylesheet" href = "/stylesheets/style.css">
+        <script src = "/routes/login.js"></script>
+    </head>
+    <body>
+
+        {{!-- <div class = "header">
+            <a class = "logo" href = "#default"><img src = "/images/eggylogo.png"></a>
+            <div class = "header-right">
+                <nav>
+                    <li {{#is title}}class = "active"{{/is}}><a href = "/home">Home</a></li>
+                    <li><a href = "/admin">Links</a></li>
+                    <li><a href = "#">Specialty</a></li>
+                    <li><a href = "/logout">Sign Out</a></li>
+                </nav>
+            </div>
+        </div> --}}
+
+        {{{body}}}
+
+    </body>
 </html>
