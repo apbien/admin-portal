@@ -20,10 +20,13 @@ router.get('/', (req, res, next) => {
                     user_id: userLoginFK
                 }
             }).then(user => {
-                res.render('home', { firstname: user.user_first_name, lastname: user.user_last_name });
+                res.render('home', { 
+                    firstname: user.user_first_name,
+                    lastname: user.user_last_name,
+                    userid: user.user_id
+                });
             });
         });
-
     }
     else {
         res.redirect('/login');
