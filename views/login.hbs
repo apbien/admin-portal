@@ -5,17 +5,11 @@
 <form method = "post" id = "loginForm">
     <div class = "main-box">
         <p class="box-title">Sign in</p>
-        <input class = "input" type = "text" placeholder = "Username" name = "login_id" id = "username">
-        <input class = "input password" type = "password" placeholder = "Password" name = "login_password" id = "password">
+        <input class = "input" type = "text" placeholder = "Username" name = "login_id" value={{{username}}}>
+        <input class = "input password" type = "password" placeholder = "Password" name = "login_password" value = {{{password}}}>
         <div class = "error-message">
-            <span id = "error-message"></span>
+            <span>{{loginError}}</span>
         </div>
         <input class = "sign-in" id = "submit" type = "submit" value = "Login">
     </div>
 </form>
-
-<script>
-    document.getElementById("submit").onclick = function () {
-        document.getElementById("error-message").innerHTML = "Incorrect login credentials";
-    };
-</script>

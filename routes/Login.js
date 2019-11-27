@@ -34,10 +34,10 @@ router.post('/', (req, res) => {
                     if (result) {
                         req.session.user = login.login_id;
                         res.redirect('/home');
-                    }
+                    } else {res.render('login', { username: '' ,loginError: 'Invalid login credentials.'}); }
 
                 })
-            }
+            } else { res.render('login', { username: '', loginError: 'Invalid login credentials.'}); }
 
         })
         .catch(err => //to catch if any other error occurs
