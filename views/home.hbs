@@ -1,31 +1,35 @@
-<div class="header">
-    <a class="logo" href="#default"><img src="/images/eggylogo.png" height="75px"></a>
-    <div class="header-right">
+<div class = "header">
+    <a class = "logo" href = "#default"><img src = "/images/eggylogo.png"></a>
+    <div class = "header-right">
         <nav>
-            <a href="/home">Home</a>
-            <a href="/logout">Sign Out</a>
+            <a href = "#">Admin Links</a>
+            <a href = "/logout">Sign Out</a>
         </nav>
     </div>
 </div>
 
-<div class="main-box">
-    <p class="box-title">Employee Home Page</p>
-    <nav>
-        <table id="info">
-            <tr>
-                <th>{{firstname}}</th>
-                <th>{{lastname}}</th>
-            </tr>
 
-
-        </table>
+<div class = "box-one main-box">
+    <p class = "box-title sub">Employee Information</p>
+    <nav id = "info">
+        <p class = "user-name">Welcome, {{ firstname }} {{ lastname }}</p>
         <ul>
-            <li><a>{{firstname}}</a></li>
-            <li><a></a>{{lastname}}</li>
-            <li><a href="#">Link 3</a></li>
-            <li><a href="#">Link 4</a></li>
-            <li><a href="#">Link 5</a></li>
-            <li><a href="#">Link 6</a></li>
+            <ol>User ID: {{ userid }}</ol>
+            <ol>Role: </ol>
+            <ol>Variable: </ol>
+            <ol>Variable: </ol>
+        </ul>
+    </nav>
+</div>
+
+
+<div class = "box-two main-box">
+    <p class = "box-title sub">Quick Links</p>
+    <nav>
+        <ul>
+            <li><a href = "#">Calendar</a></li>
+            <li><a href = "#">Benefits & Insurance</a></li>
+            <li><a href = "#">Timesheet</a></li>
         </ul>
     </nav>
 </div>
