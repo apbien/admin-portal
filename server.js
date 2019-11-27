@@ -15,28 +15,17 @@ var index = require('./routes/index');
 var login = require('./routes/Login');
 var logout = require('./routes/logout');
 var home = require('./routes/home');
+var admin = require('./routes/admin');
 
 var app = express();
 
-//SET VIEWS TO THE VIEWS DIRECTORY
+//SET THE PATH TO VIEWS DIRECTORY AND VIEWING ENGINE
 var hbs = exhbs.create({
     extname: 'hbs',
     defaultLayout: 'layout',
     layoutsDir: path.join(__dirname, 'views/layouts'),
     partialsDir: path.join(__dirname, 'views'),
-
-    // helpers: {
-    //     is: function(value, options) {
-    //         options.fn({ test: value });
-    //         if (test == "Login") {
-    //             return true;
-    //         } else {
-    //             return false;
-    //         }
-    //     }
-    // }
 });
-
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
@@ -52,7 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('trust proxy', 1) 
 
 app.use(session({
-    key: 'login_id',
+    key: 'user_id',
     secret: 'adminportal',
     resave: false,
     saveUninitialized: false,
@@ -61,8 +50,8 @@ app.use(session({
 
 //MIDDLEWARE FUNCITONS
 app.use((req, res, next) => {
-    if (req.cookies.login_id && !req.session.user) {
-        res.clearCookie('login_id');
+    if (req.cookies.user_id && !req.session.user) {
+        res.clearCookie('user_id');
     }
     next();
 });
@@ -72,6 +61,7 @@ app.use('/', index);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/home', home);
+app.use('/admin', admin);
 
 //CATCH 404 - FORWARD TO ERROR HANDLERS
 app.use(function(req, res, next) {

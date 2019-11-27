@@ -1,30 +1,22 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
-const path = require('path');
 const User = require('../models/user');
-const Login = require('../models/login');
 
 
-/* GET admin home page. */
+/* GET employee home page. */
 router.get('/', (req, res, next) => {
-    if (req.session.user) {
-        Login.findOne({
+    if (req.session.user && req.cookies.user_id) //if there is a user currently logged in
+    {
+        User.findOne({ //using the session user's primary key to cross-reference with user table to pull up all their info
             where: {
-                login_id: req.session.user
+                user_id: req.session.user
             }
-        }).then(login => {
-            var userLoginFK = login.user_login_fk;
-            User.findOne({
-                where: {
-                    user_id: userLoginFK
-                }
-            }).then(user => {
-                res.render('home', { 
-                    firstname: user.user_first_name,
-                    lastname: user.user_last_name,
-                    userid: user.user_id
-                });
+        }).then(user => {
+            res.render('home', {
+                firstname: user.user_first_name,
+                lastname: user.user_last_name,
+                userid: user.user_id
             });
         });
     }

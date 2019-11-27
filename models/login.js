@@ -3,7 +3,7 @@
 const Sequalize = require('sequelize'); //uses Dependency
 const db = require('../database/db'); //grabs the returned array from this directory
 
-//returning the 'login' column from the db as an array
+//Taking the 'login' column from the database and turning it into an array for usage in the program
 module.exports = db.sequelize.define(
     'login',
     {

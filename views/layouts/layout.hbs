@@ -7,17 +7,36 @@
     </head>
     <body>
 
-        {{!-- <div class = "header">
-            <a class = "logo" href = "#default"><img src = "/images/eggylogo.png"></a>
-            <div class = "header-right">
+        <div class="header">
+            <a class="logo" href="#default"><img src="/images/eggylogo.png"></a>
+            <div class="header-right">
                 <nav>
-                    <li {{#is title}}class = "active"{{/is}}><a href = "/home">Home</a></li>
-                    <li><a href = "/admin">Links</a></li>
-                    <li><a href = "#">Specialty</a></li>
-                    <li><a href = "/logout">Sign Out</a></li>
+                    {{#if login}}
+                    {{else if admin}}
+                    <a href="#">Admin Links</a>
+                    <a href="/logout">Sign Out</a>
+                    {{else if financeAdmin}}
+                    <a href="#">Admin Links</a>
+                    <a href="#">Finance Links</a>
+                    <a href="/logout">Sign Out</a>
+                    {{else if salesAdmin}}
+                    <a href="#">Admin Links</a>
+                    <a href="#">Sales Links</a>
+                    <a href="/logout">Sign Out</a>
+                    {{else if hrAdmin}}
+                    <a href="#">Admin Links</a>
+                    <a href="#">HR Links</a>
+                    <a href="/logout">Sign Out</a>
+                    {{else if enggAdmin}}
+                    <a href="#">Admin Links</a>
+                    <a href="#">Engineering Links</a>
+                    <a href="/logout">Sign Out</a>
+                    {{else}}
+                    <a href="/logout">Sign Out</a>
+                    {{/if}}
                 </nav>
             </div>
-        </div> --}}
+        </div>
 
         {{{body}}}
 

@@ -3,13 +3,13 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const Login = require('../models/login');
-const path = require('path');
+const User = require('../models/user');
 
 router.get('/', (req, res) => {
-    if (req.session.user && req.cookies.login_id) {
+    if (req.session.user && req.cookies.user_id) {
         res.redirect('/home');
     } else {
-        res.render('login');
+        res.render('login', { login: true });
     }
 });
 
@@ -30,20 +30,31 @@ router.post('/', (req, res) => {
         .then(login => //pass login through the function
         {
             if (login) {
-                bcrypt.compare(loginData.login_password, login.login_password, (err, result) => {
-                    if (result) {
-                        req.session.user = login.login_id;
-                        res.redirect('/home');
-                    } else {res.render('login', { username: '' ,loginError: 'Invalid login credentials.'}); }
-
+                const userLoginFK = login.user_login_fk;
+                User.findOne({
+                    where: {
+                        user_id: userLoginFK
+                    }
+                }).then(user => {
+                    if (user.employment_status != 'terminated') {
+                        bcrypt.compare(loginData.login_password, login.login_password, (err, result) => {
+                            if (result) {
+                                req.session.user = user.user_id;
+                                res.redirect('/home');
+                            } else { loginError(); }
+                        })
+                    } else { loginError();  }
                 })
-            } else { res.render('login', { username: '', loginError: 'Invalid login credentials.'}); }
-
+            } else { loginError(); }
         })
         .catch(err => //to catch if any other error occurs
         {
             res.status(400).json({ error: err });
         })
+
+    function loginError() {
+        res.render('login', { username: '', loginError: 'Invalid login credentials.', login:true });
+    }
 });
 
 //return router

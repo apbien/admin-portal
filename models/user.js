@@ -1,3 +1,5 @@
+//Look at models/login.js to understand how this is setup
+
 const Sequalize = require("sequelize");
 const db = require("../database/db");
 

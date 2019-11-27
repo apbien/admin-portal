@@ -2,6 +2,9 @@ const Sequelize = require('sequelize'); //Dependency
 const db = {}; //empty array
 
 //creates a variable called sequelize that holds information of the DB to connect to
+//mydb = name of my database that I'm pulling from
+//root = username for your login of your db
+//password = password for your login of your db
 const sequelize = new Sequelize('mydb', 'root', 'password', {
     host: 'localhost',
     dialect: 'mysql',
