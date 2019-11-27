@@ -7,7 +7,8 @@ var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var hbs = require('express-handlebars');
+var exhbs = require('express-handlebars');
+// var hbshelper = require('handlebars');
 
 //ROUTE DIRECTORIES -- ADD THE VARIABLES HERE
 var index = require('./routes/index');
@@ -18,9 +19,27 @@ var home = require('./routes/home');
 var app = express();
 
 //SET VIEWS TO THE VIEWS DIRECTORY
-app.engine('hbs', hbs({ extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname+'/views/layouts/' }));
-app.set('views', path.join(__dirname, 'views'));
+var hbs = exhbs.create({
+    extname: 'hbs',
+    defaultLayout: 'layout',
+    layoutsDir: path.join(__dirname, 'views/layouts'),
+    partialsDir: path.join(__dirname, 'views'),
+
+    // helpers: {
+    //     is: function(value, options) {
+    //         options.fn({ test: value });
+    //         if (test == "Login") {
+    //             return true;
+    //         } else {
+    //             return false;
+    //         }
+    //     }
+    // }
+});
+
+app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
+
 
 //USE OF DEPENDENCIES
 app.use(favicon(__dirname + '/public/images/egg'));
