@@ -1,3 +1,18 @@
+//TODO: Add a functions folder. Inside functions folder, add:
+    /*
+    'use strict';
+    const express = require('express');
+    const router = express.Router();
+    const User = require('../models/user');
+    const Role = require('../models/role');
+    const UserRole = require('../models/userrole');
+
+    module.exports = function(){
+        this.getRole = function(user_ID){IMPLEMENTATION FROM ADMIN ROUTE}
+    }
+    */
+
+
 'use strict';
 
 //DEPENDENCIES

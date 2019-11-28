@@ -14,38 +14,30 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-
-    const loginData = //create an array of variables using the information from the login page
-    {
-        login_id: req.body.login_id,
-        login_password: req.body.login_password
-    };
-
-    Login.findOne //function to find a login from the DB
-    ({
-        where: {
-            login_id: loginData.login_id
-        }
-    })
-        .then(login => //pass login through the function
+    Login.findByPk(req.body.login_id) //Find a login from the DB using the inputted username as a comparison to login's PK
+        .then(login =>
         {
-            if (login) {
-                const userLoginFK = login.user_login_fk;
-                User.findOne({
-                    where: {
-                        user_id: userLoginFK
-                    }
-                }).then(user => {
-                    if (user.employment_status != 'terminated') {
-                        bcrypt.compare(loginData.login_password, login.login_password, (err, result) => {
-                            if (result) {
-                                req.session.user = user.user_id;
-                                res.redirect('/home');
-                            } else { loginError(); }
-                        })
-                    } else { loginError();  }
+            if (login) //if a login with the same inputted username is found int he DB
+            {
+                User.findByPk(login.user_login_fk) //find the user data attached to that login using the FK
+                    .then(user =>
+                    {
+                        if (user.employment_status != 'terminated') //check user data to see if they're terminated before continuing
+                        {
+                            bcrypt.compare(req.body.login_password, login.login_password, (err, result) => //compare DB vs input password
+                            {
+                                if (result) //if the passwords match
+                                {
+                                    req.session.user = user.user_id; //remember the session of the user logged in
+                                    res.redirect('/home');
+                                }
+                                else { loginError(); }
+                            })
+                        }
+                        else { loginError(); }
                 })
-            } else { loginError(); }
+            }
+            else { loginError(); }
         })
         .catch(err => //to catch if any other error occurs
         {
