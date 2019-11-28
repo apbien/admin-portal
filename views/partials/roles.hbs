@@ -1,0 +1,28 @@
+{{#unless admin}}
+<div class="box-two main-box">
+    <p class="box-title sub">{{title}} Links</p>
+    <nav>
+        <ul>
+            {{#if financeAdmin}}
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+            {{else if salesAdmin}}
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+            {{else if hrAdmin}}
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+            {{else if enggAdmin}}
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li><a href="#">Link 4</a></li>
+                <li><a href="#">Link 5</a></li>
+                <li><a href="#">Link 6</a></li>
+            {{/if}}
+        </ul>
+    </nav>
+</div>
+{{/unless}}

@@ -24,7 +24,7 @@ var hbs = exhbs.create({
     extname: 'hbs',
     defaultLayout: 'layout',
     layoutsDir: path.join(__dirname, 'views/layouts'),
-    partialsDir: path.join(__dirname, 'views'),
+    partialsDir: path.join(__dirname, 'views/partials'),
 });
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
