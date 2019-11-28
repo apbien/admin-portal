@@ -23,4 +23,37 @@ router.get('/', (req, res, next) => {
     }
 });
 
+/* GET employee calendar page. */
+router.get('/calendar', (req, res, next) => {
+    if (req.session.user && req.cookies.user_id)
+    {
+        res.render('blank', { placeholder: 'Calendar Page' });
+    }
+    else {
+        res.redirect('/login');
+    }
+});
+
+/* GET employee benefits and insurance page. */
+router.get('/benefits', (req, res, next) => {
+    if (req.session.user && req.cookies.user_id)
+    {
+        res.render('blank', { placeholder: 'Benefits and Insurance' });
+    }
+    else {
+        res.redirect('/login');
+    }
+});
+
+/* GET employee timesheets page. */
+router.get('/timesheets', (req, res, next) => {
+    if (req.session.user && req.cookies.user_id)
+    {
+        res.render('blank', { placeholder: 'Timesheets' });
+    }
+    else {
+        res.redirect('/login');
+    }
+});
+
 module.exports = router;

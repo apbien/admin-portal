@@ -123,12 +123,12 @@ ul {
 
 .box-one.main-box {
     float: left;
-    margin-left: 150px;
+    margin-left: 20%;
 }
 
 .box-two.main-box {
     float: right;
-    margin-right: 150px;
+    margin-right: 20%;
 }
 
 .box-title.sub {
