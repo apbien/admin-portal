@@ -1,9 +1,7 @@
 TODO TASKS -- Design
 
 Team:
-	- Discuss organization of an added function.js || functions folder
 	- Go through and critique whether our current structure and code follows standard software engineering methods
-		- This includes the coding format found in Login.js
 	- Discuss the usage of user_has_roles table and whether or not to drop it
 	- Unit Test
 
@@ -26,25 +24,3 @@ Team:
 	- Test - make sure all links with every user role has been tested
 	- Make sure it displays on all of our computers the way we want it to
 	- Come up with a script to talk about our code/design/etc. in 5 minutes
-
-
-
-
-
-
-
-
-PAY NO ATTENTION -- TEST CODE FOR ALEX
-
-Code for the functions.js page:
-
-    'use strict';
-    const express = require('express');
-    const router = express.Router();
-    const User = require('../models/user');
-    const Role = require('../models/role');
-    const UserRole = require('../models/userrole');
-
-    module.exports = function(){
-        this.getRole = function(user_ID){IMPLEMENTATION FROM ADMIN ROUTE}
-    }

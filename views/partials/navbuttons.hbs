@@ -1,23 +1,15 @@
-{{#if login}}
-{{else if admin}}
-    <a href="#">Admin Links</a>
-    <a href="/logout">Sign Out</a>
-{{else if financeAdmin}}
-    <a href="#">Admin Links</a>
-    <a href="#">Finance Links</a>
-    <a href="/logout">Sign Out</a>
-{{else if salesAdmin}}
-    <a href="#">Admin Links</a>
-    <a href="#">Sales Links</a>
-    <a href="/logout">Sign Out</a>
-{{else if hrAdmin}}
-    <a href="#">Admin Links</a>
-    <a href="#">HR Links</a>
-    <a href="/logout">Sign Out</a>
-{{else if enggAdmin}}
-    <a href="#">Admin Links</a>
-    <a href="#">Engineering Links</a>
-    <a href="/logout">Sign Out</a>
-{{else}}
-    <a href="/logout">Sign Out</a>
-{{/if}}
+{{#unless login}}
+        <a href="/home">Home</a>
+    {{#ifEquals admin 'admin'}}
+        <a href="/admin">Admin Links</a>
+    {{else ifEquals admin 'finance_admin'}}
+        <a href="/admin">Admin + Finance Links</a>
+    {{else ifEquals admin 'sales_admin'}}
+        <a href="/admin">Admin + Sales Links</a>
+    {{else ifEquals admin 'hr_admin'}}
+        <a href="/admin">Admin + HR Links</a>
+    {{else ifEquals admin 'engineering_admin'}}
+        <a href="/admin">Admin + Engineering Links</a>
+    {{/ifEquals}}
+        <a href="/logout">Sign Out</a>
+{{/unless}}

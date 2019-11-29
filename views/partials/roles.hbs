@@ -1,28 +1,30 @@
-{{#unless admin}}
+{{#ifNotEquals admin 'admin'}}
 <div class="box-two main-box">
     <p class="box-title sub">{{title}} Links</p>
     <nav>
         <ul>
-            {{#if financeAdmin}}
-                <li><a href="#">Link 1</a></li>
-                <li><a href="#">Link 2</a></li>
-                <li><a href="#">Link 3</a></li>
-            {{else if salesAdmin}}
-                <li><a href="#">Link 1</a></li>
-                <li><a href="#">Link 2</a></li>
-            {{else if hrAdmin}}
-                <li><a href="#">Link 1</a></li>
-                <li><a href="#">Link 2</a></li>
-                <li><a href="#">Link 3</a></li>
-            {{else if enggAdmin}}
-                <li><a href="#">Link 1</a></li>
-                <li><a href="#">Link 2</a></li>
-                <li><a href="#">Link 3</a></li>
-                <li><a href="#">Link 4</a></li>
-                <li><a href="#">Link 5</a></li>
-                <li><a href="#">Link 6</a></li>
-            {{/if}}
+            {{#ifEquals admin 'finance_admin'}}
+                <li><a href="/finance/accounts">Account Manager</a></li>
+                <li><a href="/finance/liabilities">Liability Manager</a></li>
+                <li><a href="/finance/transactions">Transaction Manager</a></li>
+                <li><a href="/finance/records">Invoice and Tax Payment Records</a></li>
+                <li><a href="/finance/reports">Reports</a></li>
+            {{else ifEquals admin 'sales_admin'}}
+                <li><a href="/sales/compprof">Company Profit Margin</a></li>
+                <li><a href="/sales/procorders">Proccess Orders</a></li>                
+                <li><a href="/sales/logs">Sales Logs</a></li>
+                <li><a href="/sales/reports">Reports</a></li>
+            {{else ifEquals admin 'hr_admin'}}
+                <li><a href="/hr/employees">Employee Manager</a></li>
+                <li><a href="/hr/salary">Salary Manager</a></li>
+                <li><a href="/hr/performance">Performance Ratings</a></li>
+                <li><a href="/hr/incidents">Incident Reports</a></li>
+            {{else ifEquals admin 'engineering_admin'}}
+                <li><a href="/engineer/docmanager">Document Manager</a></li>
+                <li><a href="/engineer/optasks">Operational Tasks</a></li>
+                <li><a href="/engineer/reports">Reports</a></li>
+            {{/ifEquals}}
         </ul>
     </nav>
 </div>
-{{/unless}}
+{{/ifNotEquals}}

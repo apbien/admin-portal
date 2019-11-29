@@ -6,8 +6,7 @@ const User = require('../models/user');
 
 /* GET employee home page. */
 router.get('/', (req, res, next) => {
-    if (req.session.user && req.cookies.user_id) //if there is a user currently logged in
-    {
+    if (req.session.user && req.cookies.user_id) { //if there is a user currently logged in
         User.findByPk(req.session.user)
             .then(user => {
                 res.render('home', {
@@ -18,42 +17,25 @@ router.get('/', (req, res, next) => {
             })
             .catch(err => { res.status(400).json({ error: err });})
     }
-    else {
-        res.redirect('/login');
-    }
+    else { res.redirect('/login'); }
 });
 
 /* GET employee calendar page. */
 router.get('/calendar', (req, res, next) => {
-    if (req.session.user && req.cookies.user_id)
-    {
-        res.render('blank', { placeholder: 'Calendar Page' });
-    }
-    else {
-        res.redirect('/login');
-    }
+    if (req.session.user && req.cookies.user_id) { res.render('blank', { placeholder: 'Calendar Page' }); }
+    else { res.redirect('/login'); }
 });
 
 /* GET employee benefits and insurance page. */
 router.get('/benefits', (req, res, next) => {
-    if (req.session.user && req.cookies.user_id)
-    {
-        res.render('blank', { placeholder: 'Benefits and Insurance' });
-    }
-    else {
-        res.redirect('/login');
-    }
+    if (req.session.user && req.cookies.user_id) { res.render('blank', { placeholder: 'Benefits and Insurance' }); }
+    else { res.redirect('/login'); }
 });
 
 /* GET employee timesheets page. */
 router.get('/timesheets', (req, res, next) => {
-    if (req.session.user && req.cookies.user_id)
-    {
-        res.render('blank', { placeholder: 'Timesheets' });
-    }
-    else {
-        res.redirect('/login');
-    }
+    if (req.session.user && req.cookies.user_id) { res.render('blank', { placeholder: 'Timesheets' }); }
+    else { res.redirect('/login'); }
 });
 
 module.exports = router;

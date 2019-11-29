@@ -1,72 +1,72 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
-//require('functions.js')();
 
 /* GET admin home page. */
-router.get('/', (req, res, next) => {
-    if (req.session.user && req.cookies.user_id) //if there is a user currently logged in
-    {
-        /*const roleType = getRole();
-        switch(roleType){
-            case 'admin':
-                res.render('admin',{admin:true});
-                break;
+router.get('/', (req, res) => {
+    if (req.session.user && req.cookies.user_id /*&& req.session.role.includes('admin')*/) {//if there is a user currently logged in
+        /*Which do you like better?
+        Option 1
+        switch(req.session.role){
             case 'finance_admin':
-                res.render('admin',{financeAdmin:true, title: 'Financial'});
+                res.render('admin',{admin: req.session.role, title: 'Financial'});
                 break;
             case 'sale_admin':
-                res.render('admin',{salesAdmin:true, title: 'Sales'});
+                res.render('admin',{admin: req.session.role, title: 'Sales'});
                 break;
             case 'hr_admin':
-                res.render('admin',{hrAdmin:true, title: 'HR'});
+                res.render('admin',{admin: req.session.role, title: 'HR'});
                 break;
             case 'engineering_admin':
-                res.render('admin',{enggAdmin:true, title: 'Engineering'});
+                res.render('admin',{admin: req.session.role, title: 'Engineering'});
                 break;
             default:
                 res.render('admin', { admin: true });
         }
+        Option 2
+        var title;
+        switch(req.session.role){
+            case 'finance_admin':
+                title = 'Financial';
+                break;
+            case 'sale_admin':
+                title = 'Sales';
+                break;
+            case 'hr_admin':
+                title = 'HR';
+                break;
+            case 'engineering_admin':
+                title = 'Engineering';
+                break;
+            default:
+                title = null;
+        }
+        if(title == null){res.render('admin', {admin: 'admin')};}
+        else {res.render('admin', {admin: req.session.role, title: title});}
         */
-        res.render('admin', { admin: true });
+        res.render('admin', { admin: 'hr_admin', title: 'HR' });
     }
-    else {
-        res.redirect('/login');
+    else { res.redirect('/login'); }
+});
+
+/*GET pages for ADMIN to manage users, assigning roles to users, and the help desk*/
+router.get('/manage', (req, res) => {
+    if (req.session.user && req.cookies.user_id /*&& req.session.role.includes('admin')*/) {
+        res.render('blank', { /*admin: req.session.role , */placeholder: 'Manage Users Page' });
     }
-    /* IF WE KEEP THE ORIGINAL DATABASE STRUCTURE
-    function getRole(){
-        User.findByPk(req.session.user)
-            .then(user=>{
-                UserRole.findOne({
-                    where:{
-                        user_role_fk: user.user_id
-                    }
-                    order: [
-                        ['role_user_fk','DESC']
-                    ]
-                })
-                        .then(userRole=>{
-                            Role.findByPk(userRole.role_user_fk)
-                                .then(role=>{
-                                    return role.role_name;
-                                })
-                        })
-            })
-            .catch(err=>{res.status(400).json({ error: err });})
-        
-    */
-    /* FOR IF WE REWORKED THE DATABASE
-    function getRole(){
-        User.findByPk(req.session.user)
-            .then(user=>{
-                Role.findByPk(user.user_role_fk)
-                    .then(role=>{
-                        return role.role_name;
-                    })
-            })
-            .catch(err=>{res.status(400).json({ error: err });})
-   
-    */
+    else { res.redirect('/login'); }
+});
+router.get('/assign', (req, res) => {
+    if (req.session.user && req.cookies.user_id /*&& req.session.role.includes('admin')*/) {
+        res.render('blank', { /*admin: req.session.role , */placeholder: 'Assign User Roles Page' });
+    }
+    else { res.redirect('/login'); }
+});
+router.get('/help', (req, res) => {
+    if (req.session.user && req.cookies.user_id /*&& req.session.role.includes('admin')*/) {
+        res.render('blank', { /*admin: req.session.role , */placeholder: 'Help Desk Page' });
+    }
+    else { res.redirect('/login'); }
 });
 
 module.exports = router;
