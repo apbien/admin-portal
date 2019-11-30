@@ -52,19 +52,19 @@ router.get('/', (req, res) => {
 /*GET pages for ADMIN to manage users, assigning roles to users, and the help desk*/
 router.get('/manage', (req, res) => {
     if (req.session.user && req.cookies.user_id /*&& req.session.role.includes('admin')*/) {
-        res.render('blank', { /*admin: req.session.role , */placeholder: 'Manage Users Page' });
+        res.render('blank', { /*admin: req.session.role , */placeholder: 'Manage User Accounts' });
     }
     else { res.redirect('/login'); }
 });
 router.get('/assign', (req, res) => {
     if (req.session.user && req.cookies.user_id /*&& req.session.role.includes('admin')*/) {
-        res.render('blank', { /*admin: req.session.role , */placeholder: 'Assign User Roles Page' });
+        res.render('blank', { /*admin: req.session.role , */placeholder: 'Assign Roles' });
     }
     else { res.redirect('/login'); }
 });
 router.get('/help', (req, res) => {
     if (req.session.user && req.cookies.user_id /*&& req.session.role.includes('admin')*/) {
-        res.render('blank', { /*admin: req.session.role , */placeholder: 'Help Desk Page' });
+        res.render('blank', { /*admin: req.session.role , */placeholder: 'Help Desk' });
     }
     else { res.redirect('/login'); }
 });
