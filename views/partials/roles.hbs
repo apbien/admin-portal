@@ -1,30 +1,34 @@
 {{#ifNotEquals admin 'admin'}}
-<div class="box-two main-box">
-    <p class="box-title sub">{{title}} Links</p>
-    <nav>
-        <ul>
-            {{#ifEquals admin 'finance_admin'}}
-                <li><a href="/finance/accounts">Account Manager</a></li>
-                <li><a href="/finance/liabilities">Liability Manager</a></li>
-                <li><a href="/finance/transactions">Transaction Manager</a></li>
-                <li><a href="/finance/records">Invoice and Tax Payment Records</a></li>
-                <li><a href="/finance/reports">Reports</a></li>
-            {{else ifEquals admin 'sales_admin'}}
-                <li><a href="/sales/compprof">Company Profit Margin</a></li>
-                <li><a href="/sales/procorders">Proccess Orders</a></li>                
-                <li><a href="/sales/logs">Sales Logs</a></li>
-                <li><a href="/sales/reports">Reports</a></li>
-            {{else ifEquals admin 'hr_admin'}}
-                <li><a href="/hr/employees">Employee Manager</a></li>
-                <li><a href="/hr/salary">Salary Manager</a></li>
-                <li><a href="/hr/performance">Performance Ratings</a></li>
-                <li><a href="/hr/incidents">Incident Reports</a></li>
-            {{else ifEquals admin 'engineering_admin'}}
-                <li><a href="/engineer/docmanager">Document Manager</a></li>
-                <li><a href="/engineer/optasks">Operational Tasks</a></li>
-                <li><a href="/engineer/reports">Reports</a></li>
-            {{/ifEquals}}
-        </ul>
-    </nav>
+<div class = "outer-box">
+    <div class = "inner-box">
+        <p class = "box-title">{{title}} Links</p>
+        <nav>
+            <ul>
+                {{#ifEquals admin 'finance_admin'}}
+                    <li><a href = "/finance/reports">Finance Reports</a></li>
+                    <li><a href = "/finance/accounts">Accounts Payable</a></li>
+                    <li><a href = "/finance/receivable">Accounts Receivables</a></li>
+                    <li><a href = "/finance/taxes">Tax</a></li>
+                {{else ifEquals admin 'sales_admin'}}
+                    <li><a href = "/sales/reports">Sales Reports</a></li>
+                    <li><a href = "/sales/leads">Sales Leads</a></li>
+                    <li><a href = "/sales/demo">Sales Demo</a></li>
+                {{else ifEquals admin 'hr_admin'}}
+                    <li><a href = "/hr/newemployees">New Hire</a></li>
+                    <li><a href = "/hr/onboarding">On-boarding</a></li>
+                    <li><a href = "/hr/hrbenefits">Benefits</a></li>
+                    <li><a href = "/hr/payroll">Payroll</a></li>
+                    <li><a href = "/hr/terminations">Terminations</a></li>
+                    <li><a href = "/hr/reports">HR Reports</a></li>
+                {{else ifEquals admin 'engineering_admin'}}
+                    <li><a href = "/engineer/monitoring">Application Monitoring</a></li>
+                    <li><a href = "/engineer/techsupport">Tech Support</a></li>
+                    <li><a href = "/engineer/development">App Development</a></li>
+                    <li><a href = "/engineer/appadmin">App Admin</a></li>
+                    <li><a href = "/engineer/release">Release Management</a></li>
+                {{/ifEquals}}
+            </ul>
+        </nav>
+    </div>
 </div>
 {{/ifNotEquals}}

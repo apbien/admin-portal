@@ -68,7 +68,7 @@ app.use('/login', login);
 app.use('/logout', logout);
 app.use('/home', home);
 app.use('/admin', admin);
-app.use('/hr', hradmin);
+app.use('/hr', hrAdmin);
 app.use('/finance', financeAdmin);
 app.use('/sales', salesAdmin);
 app.use('/engineer', enggAdmin);

@@ -9,22 +9,34 @@ router.get('/', (req, res) => {
     } else { res.redirect('/login'); }
 });
 
-/*GET pages for ENGINEERING ADMIN*/
-router.get('/docmanager', (req, res) => {
+/* GET pages for ENGINEERING ADMIN */
+router.get('/monitoring', (req, res) => {
     if (req.session.user && req.cookies.user_id && req.session.role == 'engineering_admin') {
-        res.render('blank', { admin: req.session.role , placeholder: 'Engineering Document Manager Page' });
+        res.render('blank', { admin: req.session.role , placeholder: 'Application Monitoring' });
     }
     else { res.redirect('/login'); }
 });
-router.get('/optasks', (req, res) => {
+router.get('/techsupport', (req, res) => {
     if (req.session.user && req.cookies.user_id && req.session.role == 'engineering_admin') {
-        res.render('blank', { admin: req.session.role , placeholder: 'Engineering Operational Tasks Page' });
+        res.render('blank', { admin: req.session.role , placeholder: 'Tech Support' });
     }
     else { res.redirect('/login'); }
 });
-router.get('/reports', (req, res) => {
+router.get('/development', (req, res) => {
     if (req.session.user && req.cookies.user_id && req.session.role == 'engineering_admin') {
-        res.render('blank', { admin: req.session.role , placeholder: 'Engineering Reports Page' });
+        res.render('blank', { admin: req.session.role , placeholder: 'App Developments' });
+    }
+    else { res.redirect('/login'); }
+});
+router.get('/appadmin', (req, res) => {
+    if (req.session.user && req.cookies.user_id && req.session.role == 'engineering_admin') {
+        res.render('blank', { admin: req.session.role , placeholder: 'App Admins' });
+    }
+    else { res.redirect('/login'); }
+});
+router.get('/release', (req, res) => {
+    if (req.session.user && req.cookies.user_id && req.session.role == 'engineering_admin') {
+        res.render('blank', { admin: req.session.role , placeholder: 'Release Management' });
     }
     else { res.redirect('/login'); }
 });

@@ -1,15 +1,22 @@
 {{#unless login}}
-        <a href="/home">Home</a>
+        <a href = "/home">Home</a>
     {{#ifEquals admin 'admin'}}
-        <a href="/admin">Admin Links</a>
+        <a href = "/admin">Admin Links</a>
     {{else ifEquals admin 'finance_admin'}}
-        <a href="/admin">Admin + Finance Links</a>
+        <a href = "/admin">Admin + Finance Links</a>
     {{else ifEquals admin 'sales_admin'}}
-        <a href="/admin">Admin + Sales Links</a>
+        <a href = "/admin">Admin + Sales Links</a>
     {{else ifEquals admin 'hr_admin'}}
-        <a href="/admin">Admin + HR Links</a>
+        <a href = "/admin">Admin + HR Links</a>
     {{else ifEquals admin 'engineering_admin'}}
-        <a href="/admin">Admin + Engineering Links</a>
+        <a href = "/admin">Admin + Engineering Links</a>
     {{/ifEquals}}
-        <a href="/logout">Sign Out</a>
+        <a href = "/logout">Sign Out</a>
 {{/unless}}
+
+{{!-- 
+
+"Home" shouldn't show up when on the home page?
+"Admin + ---" shouldn't show up when on the admin page.
+
+--}}

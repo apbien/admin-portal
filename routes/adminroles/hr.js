@@ -9,28 +9,40 @@ router.get('/', (req, res) => {
     } else { res.redirect('/login'); }
 });
 
-/*GET pages for HR ADMIN*/
-router.get('/employees', (req, res) => {
+/* GET pages for HR ADMIN */
+router.get('/newemployees', (req, res) => {
     if (req.session.user && req.cookies.user_id && req.session.role == 'hr_admin') {
-        res.render('blank', { admin: req.session.role, placeholder: 'HR Employee Manager Page' });
+        res.render('blank', { admin: req.session.role, placeholder: 'New Hires' });
     }
     else { res.redirect('/login'); }
 });
-router.get('/salary', (req, res) => {
+router.get('/onboarding', (req, res) => {
     if (req.session.user && req.cookies.user_id && req.session.role == 'hr_admin') {
-        res.render('blank', { admin: req.session.role, placeholder: 'HR Salary Manager Page' });
+        res.render('blank', { admin: req.session.role, placeholder: 'On-Boarding Employees' });
     }
     else { res.redirect('/login'); }
 });
-router.get('/performance', (req, res) => {
+router.get('/hrbenefits', (req, res) => {
     if (req.session.user && req.cookies.user_id && req.session.role == 'hr_admin') {
-        res.render('blank', { admin: req.session.role, placeholder: 'HR Performance Page' });
+        res.render('blank', { admin: req.session.role, placeholder: 'Benefits' });
     }
     else { res.redirect('/login'); }
 });
-router.get('/incidents', (req, res) => {
+router.get('/payroll', (req, res) => {
     if (req.session.user && req.cookies.user_id && req.session.role == 'hr_admin') {
-        res.render('blank', { admin: req.session.role, placeholder: 'HR Incident Reports Page' });
+        res.render('blank', { admin: req.session.role, placeholder: 'Payroll' });
+    }
+    else { res.redirect('/login'); }
+});
+router.get('/terminations', (req, res) => {
+    if (req.session.user && req.cookies.user_id && req.session.role == 'hr_admin') {
+        res.render('blank', { admin: req.session.role, placeholder: 'Terminations' });
+    }
+    else { res.redirect('/login'); }
+});
+router.get('/reports', (req, res) => {
+    if (req.session.user && req.cookies.user_id && req.session.role == 'hr_admin') {
+        res.render('blank', { admin: req.session.role, placeholder: 'HR Reports' });
     }
     else { res.redirect('/login'); }
 });

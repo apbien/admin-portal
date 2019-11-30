@@ -4,147 +4,133 @@ body {
 }
 
 .header {
-    overflow: hidden;
     background-color: rgb(242, 249, 255);
-    padding: 10px;
-    margin: -10px;
-    height: 80px;
+    height: 5em;
+    margin: -0.5em;
+    overflow: hidden;
+    padding: 0.625em;
 }
 
-.logo {margin-left: 20px;}
-img {height: 75px;}
-
-.header-right a {
-    float: left;
-    color: #FFFFFF;
-    text-align: center;
-    padding: 12px 20px 12px 20px;
-    text-decoration: none;
-    font-size: 18px;
-    line-height: 25px;
-    border-radius: 10px;
-    background: linear-gradient(to right, rgb(28, 56, 82), rgb(58, 87, 114));
-    margin: 16px 10px auto;
-}
-
-.header-right li {
-    display: inline;
-}
+.logo { margin-left: 1.25em; }
+img { height: 4.625em; }
 
 .header-right {
-    float: right; 
-    margin-right: 10px;
+    float: right;
+    margin-right: 0.625em;
+}
+
+.header-right a {
+    background: linear-gradient(to right, rgb(28, 56, 82), rgb(58, 87, 114));
+    border-radius: 0.625em;
+    color: #FFFFFF;
+    float: left;
+    font-size: 1em;
+    line-height: 1.625em;
+    margin: 1em 0.625em;
+    padding: 0.75em 1.25em 0.75em 1.25em;
+    text-align: center;
+    text-decoration: none;
 }
 
 .header-right a:hover {opacity: 0.75}
 
-.main-box {
-    background-color: #FFFFFF;
-    width: 400px;
-    height: 400px;
-    align-self: auto;
-    margin: 100px auto;
-    border-radius: 1em;
-    font-size: 15px;
-    line-height: 25px;
-    color: rgb(13, 34, 54);
+.wrapper {
+    margin-top: 6.25em;
+    overflow: auto;
+    text-align: center;
 }
 
-.main-box a {
+.outer-box {
+    display: inline-block;
+    vertical-align: top;
+    width: 49.5%;
+}
+
+.inner-box {
+    background-color: #FFFFFF;
+    border-radius: 1em;
+    color: rgb(13, 34, 54);
+    font-size: 1em;
+    height: 25em;
+    line-height: 1.5em;
+    margin: auto;
+    overflow: auto;
+    width: 25em;
+}
+
+.inner-box a {
     color: rgb(28, 56, 82);
+    display: block;
+    height: 1.75em;
+    padding-bottom: 0.125em;
+    padding-top: 0.375em;
     text-align: center;
     text-decoration: none;
     width: 100%;
-    height: 27px;
-    padding: 5px 0px 3px 0px;
-    margin-top: 3px;
-    display: block;
 }
 
-.main-box a:hover {
+.inner-box a:hover {
     background-color: rgb(53, 83, 112);
     color: rgb(201, 212, 223);
-    letter-spacing: 0.5px;
+    letter-spacing: 0.03em;
 }
 
 ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0px;
+    padding: 0em;
 }
 
 .box-title {
-    text-align: center;
-    padding-top: 70px;
-    padding-bottom: 15px;
     color: rgb(28, 56, 82);
+    font-size: 1.75em;
     font-weight: bold;
-    font-size: 27px;
+    padding-bottom: 1em;
+    padding-top: 2em;
+    text-align: center;
 }
 
 .input {
-    width: 300px;
+    background-color: rgba(145, 170, 194, 0.1);
+    border: 0.125em solid rgba(0, 0, 0, 0.02);
+    border-radius: 1.25em;
+    box-sizing: border-box;
     color: rgb(49, 64, 71);
     font-weight: bold;
-    font-size: 14px;
-    letter-spacing: 1px;
-    background-color: rgba(145, 170, 194, 0.1);
-    padding: 10px 20px;
-    border-radius: 20px;
-    box-sizing: border-box;
-    border: 2px solid rgba(0, 0, 0, 0.02);
-    margin: auto 50px 25px 50px;
-    text-align: center;
+    font-size: 0.875em;
+    letter-spacing: 0.1em;
+    margin: auto 3em 1.5em 3em;
     outline: none;
+    padding: 0.625em 1.25em;
+    text-align: center;
+    width: 75%;
 }
 
-.input.password {margin-bottom: 50px;}
-
 .error-message {
-    text-align: center;
-    font-size: 10px;
     color: rgb(49, 64, 71);
-    margin-top: -35px;
+    font-size: 0.75em;
+    margin-top: -2em;
+    text-align: center;
 }
 
 .sign-in {
-    cursor: pointer;
-    border-radius: 20px;
-    color: #FFFFFF;
     background: linear-gradient(to right, rgb(28, 56, 82), rgb(58, 87, 114));
-    border: 0;
-    padding: 10px 35px 10px 35px;
-    font-size: 13px;
-    margin-left: 38%;
-    margin-top: 30px;
+    border: 0em;
+    border-radius: 1.25em;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 0.875em;
+    margin-top: 3em;
+    padding: 0.625em 2.25em;
 }
 
-.sign-in:hover {opacity: 0.75}
+.sign-in:hover { opacity: 0.75 }
 
-.box-one.main-box {
-    float: left;
-    margin-left: 20%;
+.inner-box ol {
+    text-align: left;
 }
 
-.box-two.main-box {
-    float: right;
-    margin-right: 20%;
-}
-
-.box-title.sub {
-    padding-top: 45px;
-}
-
-.user-name {
-    text-indent: 10px;
-}
-
-.main-box ol {
-    text-indent: 25px;
-}
-
-@media (max-width: 600px) {
+@media (max-width: 35em) {
     .main {
-        border-radius: 0px;
+        border-radius: 0em;
     }
 }

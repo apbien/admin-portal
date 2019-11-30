@@ -9,33 +9,28 @@ router.get('/', (req, res) => {
     } else { res.redirect('/login'); }
 });
 
-/*GET pages for  ADMIN*/
-router.get('/accounts', (req, res) => {
-    if (req.session.user && req.cookies.user_id && req.session.role == 'finance_admin') {
-        res.render('blank', { admin: req.session.role, placeholder: 'Financial Account Manager Page' });
-    }
-    else { res.redirect('/login'); }
-});
-router.get('/liabilities', (req, res) => {
-    if (req.session.user && req.cookies.user_id && req.session.role == 'finance_admin') {
-        res.render('blank', { admin: req.session.role, placeholder: 'Financial Liability Manager Page' });
-    }
-    else { res.redirect('/login'); }
-});
-router.get('/transactions', (req, res) => {
-    if (req.session.user && req.cookies.user_id && req.session.role == 'finance_admin') {
-        res.render('blank', { admin: req.session.role, placeholder: 'Financial Transaction Manager Page' });
-    }
-    else { res.redirect('/login'); }
-}); router.get('/records', (req, res) => {
-    if (req.session.user && req.cookies.user_id && req.session.role == 'finance_admin') {
-        res.render('blank', { admin: req.session.role, placeholder: 'Invoice and Tax Payment Records Page' });
-    }
-    else { res.redirect('/login'); }
-});
+/* GET pages for FINANCE ADMIN */
 router.get('/reports', (req, res) => {
     if (req.session.user && req.cookies.user_id && req.session.role == 'finance_admin') {
-        res.render('blank', { admin: req.session.role, placeholder: 'Financial Reports Page' });
+        res.render('blank', { admin: req.session.role, placeholder: 'Finance Reports' });
+    }
+    else { res.redirect('/login'); }
+});
+router.get('/accounts', (req, res) => {
+    if (req.session.user && req.cookies.user_id && req.session.role == 'finance_admin') {
+        res.render('blank', { admin: req.session.role, placeholder: 'Accounts Payable' });
+    }
+    else { res.redirect('/login'); }
+});
+router.get('/receivable', (req, res) => {
+    if (req.session.user && req.cookies.user_id && req.session.role == 'finance_admin') {
+        res.render('blank', { admin: req.session.role, placeholder: 'Accounts Receivable' });
+    }
+    else { res.redirect('/login'); }
+}); 
+router.get('/taxes', (req, res) => {
+    if (req.session.user && req.cookies.user_id && req.session.role == 'finance_admin') {
+        res.render('blank', { admin: req.session.role, placeholder: 'Taxes' });
     }
     else { res.redirect('/login'); }
 });
