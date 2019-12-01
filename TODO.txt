@@ -2,21 +2,8 @@ TODO TASKS -- Design
 
 Team:
 	- Go through and critique whether our current structure and code follows standard software engineering methods
-	- Discuss the usage of user_has_roles table and whether or not to drop it
 	- Unit Test
-
-Alex:
-	- Add roles model
-	- Uncomment page rendering in admin.js
-
-Jeni:
-	- Fix style.css to replace all px with em and %
-
-Hanna:
-	- Populate the database and make sure all the foreign keys are connected and referenced correctly
-
-
-
+	
 
 TODO TASKS -- Demo Presentation
 

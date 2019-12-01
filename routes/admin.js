@@ -4,8 +4,26 @@ const router = express.Router();
 
 /* GET admin home page. */
 router.get('/', (req, res) => {
-    if (req.session.user && req.cookies.user_id /*&& req.session.role.includes('admin')*/) {//if there is a user currently logged in
-        /*Which do you like better?
+    if (checkLoginCredentials(req)) {
+        switch (req.session.role) {
+            case 'Finance Admin':
+                res.render('admin', { admin: req.session.role, title: 'Financial' });
+                break;
+            case 'Sales Admin':
+                res.render('admin', { admin: req.session.role, title: 'Sales' });
+                break;
+            case 'HR Admin':
+                res.render('admin', { admin: req.session.role, title: 'HR' });
+                break;
+            case 'Engineering Admin':
+                res.render('admin', { admin: req.session.role, title: 'Engineering' });
+                break;
+            default:
+                res.render('admin', { admin: 'Admin' });
+        }
+    } else { res.redirect('/login'); }
+
+    /*Which do you like better?
         Option 1
         switch(req.session.role){
             case 'finance_admin':
@@ -43,30 +61,31 @@ router.get('/', (req, res) => {
         }
         if(title == null){res.render('admin', {admin: 'admin')};}
         else {res.render('admin', {admin: req.session.role, title: title});}
-        */
-        res.render('admin', { admin: 'hr_admin', title: 'HR' });
-    }
-    else { res.redirect('/login'); }
+    */
 });
 
 /*GET pages for ADMIN to manage users, assigning roles to users, and the help desk*/
 router.get('/manage', (req, res) => {
-    if (req.session.user && req.cookies.user_id /*&& req.session.role.includes('admin')*/) {
-        res.render('blank', { /*admin: req.session.role , */placeholder: 'Manage User Accounts' });
+    if (checkLoginCredentials(req)) {
+        res.render('blank', { admin: req.session.role , placeholder: 'Manage User Accounts' });
     }
     else { res.redirect('/login'); }
 });
 router.get('/assign', (req, res) => {
-    if (req.session.user && req.cookies.user_id /*&& req.session.role.includes('admin')*/) {
-        res.render('blank', { /*admin: req.session.role , */placeholder: 'Assign Roles' });
+    if (checkLoginCredentials(req)) {
+        res.render('blank', { admin: req.session.role , placeholder: 'Assign Roles' });
     }
     else { res.redirect('/login'); }
 });
 router.get('/help', (req, res) => {
-    if (req.session.user && req.cookies.user_id /*&& req.session.role.includes('admin')*/) {
-        res.render('blank', { /*admin: req.session.role , */placeholder: 'Help Desk' });
+    if (checkLoginCredentials(req)) {
+        res.render('blank', { admin: req.session.role , placeholder: 'Help Desk' });
     }
     else { res.redirect('/login'); }
 });
+
+function checkLoginCredentials(req) {
+    return (req.session.user && req.cookies.user_id && req.session.role && req.session.role.includes('Admin'));
+}
 
 module.exports = router;

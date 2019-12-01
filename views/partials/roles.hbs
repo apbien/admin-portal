@@ -1,26 +1,26 @@
-{{#ifNotEquals admin 'admin'}}
+{{#ifNotEquals admin 'Admin'}}
 <div class = "outer-box">
     <div class = "inner-box">
         <p class = "box-title">{{title}} Links</p>
         <nav>
             <ul>
-                {{#ifEquals admin 'finance_admin'}}
+                {{#ifEquals admin 'Finance Admin'}}
                     <li><a href = "/finance/reports">Finance Reports</a></li>
                     <li><a href = "/finance/accounts">Accounts Payable</a></li>
                     <li><a href = "/finance/receivable">Accounts Receivables</a></li>
                     <li><a href = "/finance/taxes">Tax</a></li>
-                {{else ifEquals admin 'sales_admin'}}
+                {{else ifEquals admin 'Sales Admin'}}
                     <li><a href = "/sales/reports">Sales Reports</a></li>
                     <li><a href = "/sales/leads">Sales Leads</a></li>
                     <li><a href = "/sales/demo">Sales Demo</a></li>
-                {{else ifEquals admin 'hr_admin'}}
+                {{else ifEquals admin 'HR Admin'}}
                     <li><a href = "/hr/newemployees">New Hire</a></li>
                     <li><a href = "/hr/onboarding">On-boarding</a></li>
                     <li><a href = "/hr/hrbenefits">Benefits</a></li>
                     <li><a href = "/hr/payroll">Payroll</a></li>
                     <li><a href = "/hr/terminations">Terminations</a></li>
                     <li><a href = "/hr/reports">HR Reports</a></li>
-                {{else ifEquals admin 'engineering_admin'}}
+                {{else ifEquals admin 'Engineering Admin'}}
                     <li><a href = "/engineer/monitoring">Application Monitoring</a></li>
                     <li><a href = "/engineer/techsupport">Tech Support</a></li>
                     <li><a href = "/engineer/development">App Development</a></li>

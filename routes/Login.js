@@ -4,6 +4,10 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const Login = require('../models/login');
 const User = require('../models/user');
+const UserRole = require('../models/userrole');
+const Role = require('../models/role');
+const Sequalize = require('sequelize');
+const Op = Sequalize.Op;
 
 router.get('/', (req, res) => {
     if (req.session.user && req.cookies.user_id) {
@@ -14,60 +18,50 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    Login.findByPk(req.body.login_id) //Find a login from the DB using the inputted username as a comparison to login's PK
+
+    Login.findByPk(req.body.login_id)
         .then(login => {
-            if (login) { //if a login with the same inputted username is found int he DB
-                User.findByPk(login.user_login_fk) //find the user data attached to that login using the FK
-                    .then(user => {
-                        if (user.employment_status != 'terminated') { //check user data to see if they're terminated before continuing
-                            bcrypt.compare(req.body.login_password, login.login_password, (err, result) => { //compare DB vs input password
-                                if (result) { //if the passwords match
-                                    req.session.user = user.user_id; //remember the session of the user logged in
-                                    res.redirect('/home');
-                                } else { loginError(); }
-                            })
-                        }else { loginError(); }
+            return new Promise((resolve, reject)=> {
+                bcrypt.compare(req.body.login_password, login.login_password, (err, result) => {
+                    if (err) { reject(err); }
+                    else if (result) {
+                        User.findByPk(login.user_login_fk).then(user => {
+                            resolve(user);
+                        })
+                    }
                 })
-            }else { loginError(); }
-        })
-        .catch(err => { res.status(400).json({ error: err }); })
+            })
+            loginError();
+            
+        }).then(user => {
+            if (user.employment_status != 'terminated') {
+                req.session.user = user.user_id;
+                return (
+                    UserRole.findOne({
+                        where: {
+                            user_role_fk: user.user_id,
+                            role_user_fk: { [Op.between]: [1, 5] }
+                        },
+                        order: [['role_user_fk', 'DESC']]
+                    })
+                );
+            } else { throw (err); }
+        }).then(userRole => {
+            return Role.findByPk(userRole.role_user_fk);
+        }).then(role => {
+            req.session.role = role.role_name;
+        }).then(finalResult => {
+            res.redirect('/home');
+        }).catch(err => {
+            if (req.session.user) {
+                res.redirect('/home');
+            } else {
+                loginError();
+            }
+        });
 
     function loginError() { res.render('login', { username: '', loginError: 'Invalid login credentials.', login: true }); }
-
-    /* IF WE KEEP THE ORIGINAL DATABASE STRUCTURE
-    function getRole(){
-        User.findByPk(req.session.user)
-            .then(user=>{
-                UserRole.findOne({
-                    where:{
-                        user_role_fk: user.user_id
-                    }
-                    order: [
-                        ['role_user_fk','DESC']
-                    ]
-                })
-                        .then(userRole=>{
-                            Role.findByPk(userRole.role_user_fk)
-                                .then(role=>{
-                                    return role.role_name;
-                                })
-                        })
-            })
-            .catch(err=>{res.status(400).json({ error: err });})
-   
-    */
-    /* FOR IF WE REWORKED THE DATABASE
-    function getRole(){
-        User.findByPk(req.session.user)
-            .then(user=>{
-                Role.findByPk(user.user_role_fk)
-                    .then(role=>{
-                        return role.role_name;
-                    })
-            })
-            .catch(err=>{res.status(400).json({ error: err });})
-
-    */
+    function reject() { res.render('login', { username: '', loginError: 'Invalid login credentials.', login: true }); }
 });
 
 //return router

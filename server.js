@@ -8,7 +8,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var exhbs = require('express-handlebars');
-// var hbshelper = require('handlebars');
 
 //ROUTE DIRECTORIES -- ADD THE VARIABLES HERE
 var index = require('./routes/index');
@@ -44,15 +43,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //SESSION TRACKER
-app.set('trust proxy', 1) 
-
+app.set('trust proxy', 1) ;
 app.use(session({
     key: 'user_id',
     secret: 'adminportal',
     resave: false,
-    saveUninitialized: false,
-    cookie: { expires: 600000}
-}))
+    saveUninitialized: true,
+    cookie: { expires: 600000 }
+}));
 
 //MIDDLEWARE FUNCITONS
 app.use((req, res, next) => {
@@ -85,21 +83,27 @@ app.use(function(req, res, next) {
 //DEVELOPMENT ERROR HANDLER -- PRINTS STACKTRACE
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
+        res.redirect('/login');
+        /*
         res.status(err.status || 500);
         res.json({
             message: err.message,
             error: err
         });
+        */
     });
 }
 
 //PRODUCTION ERROR HANDLER -- NO STACKTRACES LEAKED TO USER
 app.use(function(err, req, res, next) {
+    /*
     res.status(err.status || 500);
     res.json({
         message: err.message,
         error: {}
     });
+    */
+    res.redirect('/login');
 });
 
 app.set('port', process.env.PORT || 3000);
