@@ -12,9 +12,7 @@ const Op = Sequalize.Op;
 router.get('/', (req, res) => {
     if (req.session.user && req.cookies.user_id) {
         res.redirect('/home');
-    } else {
-        res.render('login', { login: true });
-    }
+    } else { res.render('login', { login: true }); }
 });
 
 router.post('/', (req, res) => {

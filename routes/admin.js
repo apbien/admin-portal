@@ -2,21 +2,32 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET admin home page. */
 router.get('/', (req, res) => {
     if (checkLoginCredentials(req)) {
         switch (req.session.role) {
             case 'Finance Admin':
-                res.render('admin', { admin: req.session.role, title: 'Financial' });
+                res.render('admin', { 
+                    admin: req.session.role, 
+                    title: 'Financial' 
+                });
                 break;
             case 'Sales Admin':
-                res.render('admin', { admin: req.session.role, title: 'Sales' });
+                res.render('admin', { 
+                    admin: req.session.role, 
+                    title: 'Sales' 
+                });
                 break;
             case 'HR Admin':
-                res.render('admin', { admin: req.session.role, title: 'HR' });
+                res.render('admin', { 
+                    admin: req.session.role, 
+                    title: 'HR' 
+                });
                 break;
             case 'Engineering Admin':
-                res.render('admin', { admin: req.session.role, title: 'Engineering' });
+                res.render('admin', { 
+                    admin: req.session.role, 
+                    title: 'Engineering' 
+                });
                 break;
             default:
                 res.render('admin', { admin: 'Admin' });
@@ -24,7 +35,6 @@ router.get('/', (req, res) => {
     } else { res.redirect('/login'); }
 });
 
-/*GET pages for ADMIN to manage users, assigning roles to users, and the help desk*/
 router.get('/manage', (req, res) => {
     if (checkLoginCredentials(req)) {
         res.render('blank', {
@@ -33,6 +43,7 @@ router.get('/manage', (req, res) => {
         });
     } else { res.redirect('/login'); }
 });
+
 router.get('/assign', (req, res) => {
     if (checkLoginCredentials(req)) {
         res.render('blank', {
@@ -41,6 +52,7 @@ router.get('/assign', (req, res) => {
         });
     } else { res.redirect('/login'); }
 });
+
 router.get('/help', (req, res) => {
     if (checkLoginCredentials(req)) {
         res.render('blank', {

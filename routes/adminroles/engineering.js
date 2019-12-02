@@ -2,14 +2,12 @@
 const express = require('express');
 const router = express.Router();
 
-/* Engineering home page doesn't exist so it takes them back to admin */
 router.get('/', (req, res) => {
-    if (req.session.user && req.cookies.user_id && req.session.role == 'Engineering Admin') {
+    if (checkEngineerLogin(req)) {
         res.redirect('/admin');
     } else { res.redirect('/login'); }
 });
 
-/* GET pages for ENGINEERING ADMIN */
 router.get('/monitoring', (req, res) => {
     if (checkEngineerLogin(req)) {
         res.render('blank', {
@@ -18,6 +16,7 @@ router.get('/monitoring', (req, res) => {
             });
     } else { res.redirect('/login'); }
 });
+
 router.get('/techsupport', (req, res) => {
     if (checkEngineerLogin(req)) {
         res.render('blank', {
@@ -26,6 +25,7 @@ router.get('/techsupport', (req, res) => {
         });
     } else { res.redirect('/login'); }
 });
+
 router.get('/development', (req, res) => {
     if (checkEngineerLogin(req)) {
         res.render('blank', {
@@ -34,6 +34,7 @@ router.get('/development', (req, res) => {
         });
     } else { res.redirect('/login'); }
 });
+
 router.get('/appadmin', (req, res) => {
     if (checkEngineerLogin(req)) {
         res.render('blank', {
@@ -42,6 +43,7 @@ router.get('/appadmin', (req, res) => {
         });
     } else { res.redirect('/login'); }
 });
+
 router.get('/release', (req, res) => {
     if (checkEngineerLogin(req)) {
         res.render('blank', {
@@ -54,4 +56,5 @@ router.get('/release', (req, res) => {
 function checkEngineerLogin(req) {
     return (req.session.user && req.cookies.user_id && req.session.role == 'Engineering Admin');
 }
+
 module.exports = router;

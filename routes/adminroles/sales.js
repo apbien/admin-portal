@@ -2,14 +2,12 @@
 const express = require('express');
 const router = express.Router();
 
-/* Sales Admin home page doesn't exist so it takes them back to admin */
 router.get('/', (req, res) => {
     if (checkSalesLogin(req)) {
         res.redirect('/admin');
     } else { res.redirect('/login'); }
 });
 
-/* GET pages for SALES ADMIN */
 router.get('/reports', (req, res) => {
     if (checkSalesLogin(req)) {
         res.render('blank', {
@@ -18,6 +16,7 @@ router.get('/reports', (req, res) => {
         });
     } else { res.redirect('/login'); }
 });
+
 router.get('/leads', (req, res) => {
     if (checkSalesLogin(req)) {
         res.render('blank', {
@@ -26,6 +25,7 @@ router.get('/leads', (req, res) => {
         });
     } else { res.redirect('/login'); }
 });
+
 router.get('/demo', (req, res) => {
     if (checkSalesLogin(req)) {
         res.render('blank', {

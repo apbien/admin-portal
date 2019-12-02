@@ -2,24 +2,22 @@
 
 const Sequalize = require('sequelize');
 const db = require('../database/db');
-const User = require(__dirname+'/user');
-const Role = require(__dirname+'/role');
+const User = require(__dirname + '/user');
+const Role = require(__dirname + '/role');
 
 var UserRole = db.sequelize.define(
     'user_has_role', {
         user_role_fk: {
             type: Sequalize.INTEGER,
 			primaryKey: true,
-            references:
-            {
+            references: {
                 model: 'user',
                 key: 'user_id'
             }
         },
         role_user_fk: {
             type: Sequalize.INTEGER,
-            references:
-            {
+            references: {
                 model: 'role',
                 key: 'role_id'
             }

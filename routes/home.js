@@ -3,9 +3,8 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 
-/* GET employee home page. */
 router.get('/', (req, res, next) => {
-    if (req.session.user && req.cookies.user_id) { //if there is a user currently logged in
+    if (req.session.user && req.cookies.user_id) {
         User.findByPk(req.session.user)
             .then(user => {
                 res.render('home', {
@@ -19,7 +18,6 @@ router.get('/', (req, res, next) => {
     } else { res.redirect('/login'); }
 });
 
-/* GET employee calendar page. */
 router.get('/calendar', (req, res, next) => {
     if (req.session.user && req.cookies.user_id) {
         res.render('blank', {
@@ -29,7 +27,6 @@ router.get('/calendar', (req, res, next) => {
     } else { res.redirect('/login'); }
 });
 
-/* GET employee benefits and insurance page. */
 router.get('/benefits', (req, res, next) => {
     if (req.session.user && req.cookies.user_id) {
         res.render('blank', {
@@ -39,7 +36,6 @@ router.get('/benefits', (req, res, next) => {
     } else { res.redirect('/login'); }
 });
 
-/* GET employee timesheets page. */
 router.get('/timesheets', (req, res, next) => {
     if (req.session.user && req.cookies.user_id) {
         res.render('blank', {

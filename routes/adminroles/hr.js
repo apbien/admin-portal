@@ -2,14 +2,12 @@
 const express = require('express');
 const router = express.Router();
 
-/* HR Admin home page doesn't exist so it takes them back to admin */
 router.get('/', (req, res) => {
     if (checkHRLogin(req)) {
         res.redirect('/admin');
     } else { res.redirect('/login'); }
 });
 
-/* GET pages for HR ADMIN */
 router.get('/newemployees', (req, res) => {
     if (checkHRLogin(req)) {
         res.render('blank', {
@@ -18,6 +16,7 @@ router.get('/newemployees', (req, res) => {
         });
     } else { res.redirect('/login'); }
 });
+
 router.get('/onboarding', (req, res) => {
     if (checkHRLogin(req)) {
         res.render('blank', {
@@ -26,6 +25,7 @@ router.get('/onboarding', (req, res) => {
         });
     } else { res.redirect('/login'); }
 });
+
 router.get('/hrbenefits', (req, res) => {
     if (checkHRLogin(req)) {
         res.render('blank', {
@@ -34,6 +34,7 @@ router.get('/hrbenefits', (req, res) => {
         });
     } else { res.redirect('/login'); }
 });
+
 router.get('/payroll', (req, res) => {
     if (checkHRLogin(req)) {
         res.render('blank', {
@@ -42,6 +43,7 @@ router.get('/payroll', (req, res) => {
         });
     } else { res.redirect('/login'); }
 });
+
 router.get('/terminations', (req, res) => {
     if (checkHRLogin(req)) {
         res.render('blank', {
@@ -50,6 +52,7 @@ router.get('/terminations', (req, res) => {
         });
     } else { res.redirect('/login'); }
 });
+
 router.get('/reports', (req, res) => {
     if (checkHRLogin(req)) {
         res.render('blank', {

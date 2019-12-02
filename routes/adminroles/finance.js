@@ -2,14 +2,12 @@
 const express = require('express');
 const router = express.Router();
 
-/* Finance Admin home page doesn't exist so it takes them back to admin */
 router.get('/', (req, res) => {
     if (checkFinanceLogin(req)) {
         res.redirect('/admin');
     } else { res.redirect('/login'); }
 });
 
-/* GET pages for FINANCE ADMIN */
 router.get('/reports', (req, res) => {
     if (checkFinanceLogin(req)) {
         res.render('blank', {
@@ -18,6 +16,7 @@ router.get('/reports', (req, res) => {
         });
     } else { res.redirect('/login'); }
 });
+
 router.get('/accounts', (req, res) => {
     if (checkFinanceLogin(req)) {
         res.render('blank', {
@@ -26,6 +25,7 @@ router.get('/accounts', (req, res) => {
         });
     } else { res.redirect('/login'); }
 });
+
 router.get('/receivable', (req, res) => {
     if (checkFinanceLogin(req)) {
         res.render('blank', {
@@ -34,6 +34,7 @@ router.get('/receivable', (req, res) => {
         });
     } else { res.redirect('/login'); }
 }); 
+
 router.get('/taxes', (req, res) => {
     if (checkFinanceLogin(req)) {
         res.render('blank', {

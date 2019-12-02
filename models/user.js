@@ -13,7 +13,7 @@ module.exports = db.sequelize.define(
         user_first_name: {
             type: Sequalize.STRING,
             allowNull: false,
-            validate: { len:[0,20] }
+            validate: { len:[0, 20] }
         },
         user_last_name: {
             type: Sequalize.STRING,
@@ -38,7 +38,8 @@ module.exports = db.sequelize.define(
         },
         employment_status: {
             type: Sequalize.ENUM,
-            values: ['new_hire', 'on_boarding', 'full_time', 'part_time', 'terminated', 'applied', 'rejected'],
+            values: ['new_hire', 'on_boarding', 'full_time', 'part_time', 
+                        'terminated', 'applied', 'rejected'],
             allowNull: false,
             defaultValue: 'applied'
         },
@@ -46,7 +47,6 @@ module.exports = db.sequelize.define(
             type: Sequalize.DECIMAL,
             allowNull: true
         }
-
     },
     {
         timestamps: false,
