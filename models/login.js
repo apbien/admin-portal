@@ -1,38 +1,30 @@
 'use strict';
+const Sequalize = require('sequelize'); 
+const db = require('../database/db'); 
 
-const Sequalize = require('sequelize'); //uses Dependency
-const db = require('../database/db'); //grabs the returned array from this directory
-
-//Taking the 'login' column from the database and turning it into an array for usage in the program
 module.exports = db.sequelize.define(
-    'login',
-    {
+    'login', {
         login_id: {
             type: Sequalize.STRING,
             primaryKey: true,
             allowNull: false,
-            validate: {
-                len: [3, 10]
-            }
+            validate: { len: [3, 10] }
         },
         login_password: {
             type: Sequalize.STRING,
             allowNull: false,
-            validate: {
-                len: [7,100]
-            }
+            validate: { len: [7,100] }
         },
         user_login_fk: {
             type: Sequalize.INTEGER,
-            references: //how to reference a foreign-key
-            {
+            references: {
                 model: 'user',
                 key: 'user_id'
             }
         }
     },
     {
-        timestamps: false, //allows you to see when queries were made - false because unnecessary for now
-        freezeTableName: true //prevents from adding an 's' to the end of a table name
+        timestamps: false, 
+        freezeTableName: true 
     }
 )

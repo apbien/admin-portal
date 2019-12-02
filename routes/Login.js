@@ -18,22 +18,21 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-
     Login.findByPk(req.body.login_id)
         .then(login => {
-            return new Promise((resolve, reject)=> {
-                bcrypt.compare(req.body.login_password, login.login_password, (err, result) => {
-                    if (err) { reject(err); }
-                    else if (result) {
-                        User.findByPk(login.user_login_fk).then(user => {
-                            resolve(user);
-                        })
-                    }
-                })
+            return new Promise((resolve, reject) => {
+                bcrypt.compare(req.body.login_password, login.login_password,
+                    (err, result) => {
+                        if (err) { reject(err); }
+                        else if (result) {
+                            User.findByPk(login.user_login_fk)
+                                .then(user => { resolve(user); })
+                        }
+                    })
             })
             loginError();
-            
-        }).then(user => {
+        })
+        .then(user => {
             if (user.employment_status != 'terminated') {
                 req.session.user = user.user_id;
                 return (
@@ -46,13 +45,17 @@ router.post('/', (req, res) => {
                     })
                 );
             } else { throw (err); }
-        }).then(userRole => {
+        })
+        .then(userRole => {
             return Role.findByPk(userRole.role_user_fk);
-        }).then(role => {
+        })
+        .then(role => {
             req.session.role = role.role_name;
-        }).then(finalResult => {
+        })
+        .then(finalResult => {
             res.redirect('/home');
-        }).catch(err => {
+        })
+        .catch(err => {
             if (req.session.user) {
                 res.redirect('/home');
             } else {
@@ -60,9 +63,13 @@ router.post('/', (req, res) => {
             }
         });
 
-    function loginError() { res.render('login', { username: '', loginError: 'Invalid login credentials.', login: true }); }
-    function reject() { res.render('login', { username: '', loginError: 'Invalid login credentials.', login: true }); }
+    function loginError() {
+        res.render('login', {
+            username: '',
+            loginError: 'Invalid login credentials.',
+            login: true
+        });
+    }
 });
 
-//return router
 module.exports = router;

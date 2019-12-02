@@ -6,8 +6,7 @@ const User = require(__dirname+'/user');
 const Role = require(__dirname+'/role');
 
 var UserRole = db.sequelize.define(
-    'user_has_role',
-    {
+    'user_has_role', {
         user_role_fk: {
             type: Sequalize.INTEGER,
 			primaryKey: true,

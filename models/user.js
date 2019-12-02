@@ -1,12 +1,9 @@
-//Look at models/login.js to understand how this is setup
 'use strict';
-
 const Sequalize = require("sequelize");
 const db = require("../database/db");
 
 module.exports = db.sequelize.define(
-    'user',
-    {
+    'user', {
         user_id: {
             type: Sequalize.INTEGER,
             primaryKey: true,
@@ -16,16 +13,12 @@ module.exports = db.sequelize.define(
         user_first_name: {
             type: Sequalize.STRING,
             allowNull: false,
-            validate: {
-                len:[0,20]
-            }
+            validate: { len:[0,20] }
         },
         user_last_name: {
             type: Sequalize.STRING,
             allowNull: false,
-            validate: {
-                len: [0, 30]
-            }
+            validate: { len: [0, 30] }
         },
         user_email: {
             type: Sequalize.STRING,
