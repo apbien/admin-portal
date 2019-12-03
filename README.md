@@ -13,7 +13,6 @@ To run:
 	npm i bcrypt
 	npm i sequelize
 	npm i mysql2
-	npm i bluebird
 	npm install --save-dev jest
 	npm install supertest --save-dev
 2) Go to project folder using the command prompt

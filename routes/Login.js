@@ -25,10 +25,9 @@ router.post('/', (req, res) => {
                         else if (result) {
                             User.findByPk(login.user_login_fk)
                                 .then(user => { resolve(user); })
-                        }
+                        } else { loginError(); }
                     })
             })
-            loginError();
         })
         .then(user => {
             if (user.employment_status != 'terminated') {
@@ -42,7 +41,7 @@ router.post('/', (req, res) => {
                         order: [['role_user_fk', 'DESC']]
                     })
                 );
-            } else { throw (err); }
+            } else { loginError(); }
         })
         .then(userRole => {
             return Role.findByPk(userRole.role_user_fk);
