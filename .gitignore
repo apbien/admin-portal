@@ -1,1 +1,3 @@
 /database
+#Node Modules Ignore
+node_modules/
