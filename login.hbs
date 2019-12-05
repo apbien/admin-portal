@@ -1,0 +1,13 @@
+<div class = "outer-box">
+    <form method = "post" id = "loginForm">
+        <div class = "inner-box">
+            <p class = "box-title">Sign in</p>
+            <input class = "input" type = "text" placeholder = "Username" name = "login_id" value = {{{username}}}>
+            <input class = "input password" type = "password" placeholder = "Password" name = "login_password" value = {{{password}}}>
+            <div class = "error-message">
+                <span>{{ loginError }}</span>
+            </div>
+            <input class = "sign-in" id = "submit" type = "submit" value = "Login">
+        </div>
+    </form>
+</div>
