@@ -32,7 +32,7 @@ img { height: 4.625em; }
     text-decoration: none;
 }
 
-.header-right a:hover {opacity: 0.75}
+.header-right a:hover { opacity: 0.75 }
 
 .wrapper {
     margin-top: 6.25em;
