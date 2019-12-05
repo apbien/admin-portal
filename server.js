@@ -17,6 +17,7 @@ var hrAdmin = require('./routes/adminroles/hr');
 var financeAdmin = require('./routes/adminroles/finance');
 var salesAdmin = require('./routes/adminroles/sales');
 var enggAdmin = require('./routes/adminroles/engineering');
+var signup = require('./routes/signup')
 
 var app = express();
 
@@ -61,6 +62,7 @@ app.use('/hr', hrAdmin);
 app.use('/finance', financeAdmin);
 app.use('/sales', salesAdmin);
 app.use('/engineer', enggAdmin);
+app.use('/signup', signup);
 
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -93,3 +95,5 @@ app.set('port', process.env.PORT || 3000);
 var server = app.listen(app.get('port'), function() {
     console.log('Express server listening on port ' + server.address().port);
 });
+
+module.exports = server;

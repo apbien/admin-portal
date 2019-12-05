@@ -1,0 +1,8 @@
+<div class="outer-box">
+    <div class="inner-box">
+        <p class="box-title sub">{{ placeholder }}</p>
+        {{#each users}}
+        <p>{{this.user_id}} | {{this.user_first_name}} {{this.user_last_name}} | {{this.employment_status}} </p>
+        {{/each}}
+    </div>
+</div>

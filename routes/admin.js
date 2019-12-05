@@ -1,6 +1,7 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
+const User = require('../models/user');
 
 router.get('/', (req, res) => {
     if (checkLoginCredentials(req)) {
@@ -39,17 +40,19 @@ router.get('/manage', (req, res) => {
     if (checkLoginCredentials(req)) {
         res.render('blank', {
             admin: req.session.role,
-            placeholder: 'Manage User Accounts'
+            placeholder: "Manage Users"
         });
     } else { res.redirect('/login'); }
 });
 
 router.get('/assign', (req, res) => {
     if (checkLoginCredentials(req)) {
-        res.render('blank', {
-            admin: req.session.role,
-            placeholder: 'Assign Roles'
-        });
+        User.findAll().then(users => {
+            res.render('assign', {
+                users: users,
+                placeholder: "Users"
+            })
+        })
     } else { res.redirect('/login'); }
 });
 

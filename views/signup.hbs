@@ -1,0 +1,20 @@
+<div class = "outer-box">
+    <form method = "post" id = "loginForm">
+        <div class = "inner-box">
+            <p class = "box-title">Sign up</p>
+
+            <input class = "input" type = "text" placeholder = "First Name" name = "user_first_name" value = {{{ firstname }}}>
+            <input class = "input" type = "text" placeholder = "Last Name" name = "user_last_name" value = {{{ lastname }}}>
+            <input class = "input" type = "text" placeholder = "E-mail Address" name = "user_email" value = {{{ email }}}>
+            <input class = "input" type = "text" placeholder = "Username" name = "login_id" value = {{{ username }}}>
+            <input class = "input" type = "password" placeholder = "Password" name = "login_password" value = {{{ password }}}>
+            
+            <div class = "error-message">
+                <span>{{ loginError }}</span>
+            </div>
+
+            <input class = "sign-in" id = "submit" type = "submit" value = "signup">
+
+        </div>
+    </form>
+</div>
